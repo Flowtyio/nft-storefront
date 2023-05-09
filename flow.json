@@ -8,7 +8,8 @@
     "contracts": {
         "NFTStorefront": "./contracts/NFTStorefront.cdc",
         "NFTStorefrontV2": "./contracts/NFTStorefrontV2.cdc",
-        "ViewResolver": "./contracts/ViewResolver.cdc",
+        "ViewResolver": "./contracts/utility/ViewResolver.cdc",
+        "MetadataViews": "./contracts/utility/MetadataViews.cdc",
         "FungibleToken": {
             "source": "./contracts/utility/FungibleToken.cdc",
             "aliases": {
@@ -30,6 +31,14 @@
                 "testnet": "0x324c34e1c517e4db",
                 "mainnet": "0x49a7cda3a1eecc29"
             }
+        },
+        "NFTCatalogAdmin": {
+            "source": "./contracts/utility/NFTCatalogAdmin.cdc",
+            "aliases": {
+                "emulator": "0xf8d6e0586b0a20c7",
+                "testnet": "0x324c34e1c517e4db",
+                "mainnet": "0x49a7cda3a1eecc29"
+            }
         }
     },
     "networks": {
@@ -40,12 +49,25 @@
     "accounts": {
         "emulator-account": {
             "address": "0xf8d6e0586b0a20c7",
-            "key": "$FLOW_EMULATOR_PRIVATE_KEY"
-        }
+            "key": "686779d775e5fcbf8d2f4a85cb4c53525d02b7ef53230d180fc16f35d9b7d025"
+        },
+		"emulator-ft": {
+			"address": "ee82856bf20e2aa6",
+			"key": "686779d775e5fcbf8d2f4a85cb4c53525d02b7ef53230d180fc16f35d9b7d025"
+		}
     },
     "deployments": {
         "emulator": {
-            "emulator-account": ["FungibleToken", "NonFungibleToken", "NFTStorefrontV2"]
+            "emulator-account": [
+                "NonFungibleToken",
+                "NFTStorefrontV2",
+                "ViewResolver",
+                "MetadataViews",
+                "NFTCatalog",
+                "NFTCatalogAdmin"
+            ],
+            "emulator-ft": ["FungibleToken"]
         }
     }
 }
+ 

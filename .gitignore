@@ -1,1 +1,4 @@
 lib/js/test/node_modules/*
+.env
+
+*/**/.DS_Store

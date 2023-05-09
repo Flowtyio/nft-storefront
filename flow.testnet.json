@@ -19,8 +19,16 @@
   },
   "accounts": {
     "testnet-account": {
-      "address": "0x2d55b98eb200daef",
+      "address": "0x86aa0c21d6fe4ead",
       "key": "$TESTNET_KEY"
+    },
+    "testnet-buyer": {
+      "address": "0xfb675e7a34b2f75e",
+      "key": "$BUYER_KEY"
+    },
+    "testnet-seller": {
+      "address": "0x2e1dacf20102e79c",
+      "key": "$SELLER_KEY"
     }
   },
   "deployments": {

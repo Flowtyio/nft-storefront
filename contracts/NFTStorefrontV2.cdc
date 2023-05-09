@@ -1,5 +1,5 @@
-import FungibleToken from "./utility/FungibleToken.cdc"
-import NonFungibleToken from "./utility/NonFungibleToken.cdc"
+import "FungibleToken"
+import "NonFungibleToken"
 
 /// NFTStorefrontV2
 ///
@@ -317,7 +317,6 @@ pub contract NFTStorefrontV2 {
             payment: @FungibleToken.Vault, 
             commissionRecipient: Capability<&{FungibleToken.Receiver}>?,
         ): @NonFungibleToken.NFT {
-
             pre {
                 self.details.purchased == false: "listing has already been purchased"
                 payment.isInstance(self.details.salePaymentVaultType): "payment vault is not requested fungible token"
@@ -325,8 +324,10 @@ pub contract NFTStorefrontV2 {
                 self.details.expiry > UInt64(getCurrentBlock().timestamp): "Listing is expired"
                 self.owner != nil : "Resource doesn't have the assigned owner"
             }
+
             // Make sure the listing cannot be purchased again.
             self.details.setToPurchased() 
+
             
             if self.details.commissionAmount > 0.0 {
                 // If commission recipient is nil, Throw panic.
